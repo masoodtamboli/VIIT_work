@@ -8,6 +8,7 @@ struct Node{
 
 class LinkedList{
 public:
+    int count = 0;
     LinkedList(){
         head = nullptr;
         tail = nullptr;
@@ -65,6 +66,22 @@ public:
         }
     }
 
+    int search(int key){
+        if(isEmpty()){
+            cout<<"LinkedList is Empty"<<endl;
+        }else{
+            temp = head;
+            while(temp != nullptr){
+                if(temp->data == key){
+                    return 1;
+                }
+                temp  = temp->next;
+                count++;
+            }
+        }
+        return 0;
+    }
+
     void display(){
         if(isEmpty()){
             cout<<"LinkedList is Empty"<<endl;
@@ -94,4 +111,6 @@ int main(){
     L.addNodeMid(21,20);
     L.addNodeMid(22,21);
     L.display();
+    (L.search(255) == 0) ? cout <<endl<< "Search item is not available in LinkedList"<<endl :
+                            cout <<endl<< "Search item is available in LinkedList at "<<L.count<<endl;
 }
