@@ -65,8 +65,8 @@ public:
             }
         }
     }
+    
     void deleteMyKey(int key){
-
         if(isEmpty()){
             cout<<"LinkedList is empty"<<endl;
         }else if(head->data == key){
@@ -89,6 +89,13 @@ public:
         }
     }
 
+    void deleteStart(){
+        if(isEmpty()){
+            cout<<"LinkedList is Empty"<<endl;
+        }else{
+            head = head->next;
+        }
+    }
 
     int search(int key){
         if(isEmpty()){
@@ -139,5 +146,6 @@ int main(){
     (L.search(255) == 0) ? cout <<endl<< "Search item is not available in LinkedList"<<endl :
                             cout <<endl<< "Search item is available in LinkedList at "<<L.count<<endl;
     L.deleteMyKey(30);
+    L.deleteStart();
     L.display();
 }
