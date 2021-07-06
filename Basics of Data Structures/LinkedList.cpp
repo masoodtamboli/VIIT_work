@@ -65,6 +65,30 @@ public:
             }
         }
     }
+    void deleteMyKey(int key){
+
+        if(isEmpty()){
+            cout<<"LinkedList is empty"<<endl;
+        }else if(head->data == key){
+            temp = head;
+            head = head->next;
+            delete(temp);
+        }else{
+            temp = head;
+            while(temp != nullptr){
+                if(temp == tail){
+                    break;
+                }
+                if(temp->next->data == key){
+                    temp->next = temp->next->next;
+                }else{
+                    temp = temp->next;
+                }
+                
+            }
+        }
+    }
+
 
     int search(int key){
         if(isEmpty()){
@@ -110,7 +134,10 @@ int main(){
     L.addNodeBegin(8);
     L.addNodeMid(21,20);
     L.addNodeMid(22,21);
+    
     L.display();
     (L.search(255) == 0) ? cout <<endl<< "Search item is not available in LinkedList"<<endl :
                             cout <<endl<< "Search item is available in LinkedList at "<<L.count<<endl;
+    L.deleteMyKey(30);
+    L.display();
 }
