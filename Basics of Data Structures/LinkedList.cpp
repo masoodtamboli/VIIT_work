@@ -4,7 +4,7 @@ using namespace std;
 struct Node{
     int data;
     Node *next;
-}*head, *tail, *temp, *current;
+}*head, *tail, *temp, *current, *previous, *further;
 
 class LinkedList{
 public:
@@ -113,6 +113,23 @@ public:
         return 0;
     }
 
+    void reverseList(){
+        if(isEmpty()){
+            cout<<"LinkedList is Empty"<<endl;
+        }else{
+            current = head;
+            previous = nullptr;
+            further = nullptr;
+            while(current != nullptr){
+                further = current->next;
+                current->next = previous;
+                previous = current;
+                current = further;
+            }   
+            head = previous;
+        }
+    }
+
     void display(){
         if(isEmpty()){
             cout<<"LinkedList is Empty"<<endl;
@@ -147,5 +164,8 @@ int main(){
                             cout <<endl<< "Search item is available in LinkedList at "<<L.count<<endl;
     L.deleteMyKey(30);
     L.deleteStart();
+    L.display();
+    cout<<endl;
+    L.reverseList();
     L.display();
 }
